@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<section class="hero-section hero-section-full-height">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 p-0">
+                <div id="hero-slide" class="carousel carousel-fade slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{% static 'image/home1.jpg' %}" class="carousel-image img-fluid" alt="...">
+                            
+                        </div>
+
+                    
+                    </div>
+
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<br/>
+
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 text-center">
+                <h2>Bienvenue chez TrashPick-up !</h2>
+                <p>Chez TrashPickup, nous croyons en un avenir sans déchets. Notre slogan, "Zéro déchet, maximum de confort", reflète notre engagement à offrir des solutions efficaces pour la gestion des déchets.</p>
+            </div>
+            <div class="text-center">
+                <img src="{% static 'image/Service.jpg' %}" class="custom" alt="...">
+            </div>
+            
+            <style>
+            .custom-img {
+                max-width: 50%; /* Ajustez ce pourcentage selon vos besoins */
+                height: auto; /* Pour conserver les proportions */
+            }
+            .custom {
+                max-width: 90%;
+                height: auto;
+
+            }
+            h3{
+                color: #28a745;
+            }
+            h2{
+                color: #28a745;
+            }
+            .navbar-enr{
+                color: rgb(3, 91, 255);
+            }
+
+            </style>
+            <div class="col-md-12"></div>
+            <div class="col-sm-6 col-md-6 info">
+                
+                <h3>TrashPick-up</h3>
+                <h4>Zéro déchet, &AMP;  maximum de confort</h4>
+                <p>Nous prenons en charge l'évacuation des déchets ménagers et des entreprise avec ponctualité et efficacité.</p>
+                <p>Faites confiance à notre équipe pour une gestion des déchets responsable et respectueuse de l'environnement.</p>
+                <div>
+                    <img src="{% static 'image/logo.jpg' %}" class="custom-img" alt="...">
+                </div>
+            </div>
+            
+            <div class="col-sm-6 col-md-6 skills">
+                <h3>Qui Somme Nous?</h3>
+                <p>Nous nous spécialisons dans l'évacuation des déchets ménagers et des déchets d'entreprise, en garantissant un service ponctuel et fiable. Notre équipe dévouée s'assure que vos déchets sont traités de manière responsable, vous permettant ainsi de vous concentrer sur l'essentiel.</p>
+                <p>Chez TrashPickup, nous croyons fermement en un monde où la propreté et le respect de l'environnement vont de pair. C'est pourquoi nous mettons en œuvre des pratiques durables pour réduire l'impact de nos déchets sur notre planète.
+
+                    Rejoignez-nous dans notre démarche vers un avenir plus propre et plus responsable  <a href="{% url 'register_client' %}" class="navbar-enr">Cliqué ici pour vous enregistre 
+                    </a> </p>
+            </div>
+          
+        </div>
+        
+    </div>
+</section>
+<br/>
+<br/>
+<br/>
+
+<section id="about" style="background-color: #ececec; padding: 30px 0;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 text-center mb-4">
+                <h2 style="font-weight: bold; color: #000000;">PROGRAMME & SERVICE</h2>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-100 shadow-sm" style="border-radius: 10px;">
+                        <img src="{% static 'image/home1.jpg' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #05ec11;">Récupération des déchets Domicile</h5>
+                            <h6 style="color: #555;">lundi, mercredi, vendredi & mardi,vendredi</h6>
+                            <h5 class="card-title" style="color: #05ec11;">Récupération des Entreprise </h5>
+                            <h6 style="color: #555;">Ajustable a la demande</h6>
+                            <p class="card-text">Évacuation de tous les déchets de nos abonnés sous contrat</p>
+                        </div>
+                        <div class="card-footer text-muted" style="background-color: #f8f9fa;">
+                            <small>sachet poubelle gratuit</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm" style="border-radius: 10px;">
+                        <img src="{% static 'image/bon2.jpg' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #05ec11;">Abonnement</h5>
+                            <p class="card-text">Pour les entreprises, une évaluation sur terrain déterminera le prix du bouquet extra que vous allez choisir.</p>
+                            <h6><a href="{% url 'register_client' %}" class="navbar-enr">+Cliqué ici pour vous enregistre 
+                            </a></h6> 
+                        </div>
+                        <div class="card-footer text-muted" style="background-color: #f8f9fa;">
+                            <small></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm" style="border-radius: 10px;">
+                        <img src="{% static 'image/service.jpg' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: #05ec11;">Service Client</h5>
+                            <p class="card-text">1. Assistance Personnalisée 
+                                2.Réponses Rapides 
+                                3. Formation et Conseils
+                                4. Feedback Client 
+                                5. Support Multicanal 
+                                6. Suivi Proactif
+                                7. Équipe Formée 
+                                8. Garanties et Engagements 
+                                9. Ressources en Ligne
+                                10. Offres Spéciales et Promotions 
+                            </p>
+                            <h6><a href="{% url 'register_client' %}" class="navbar-enr">+ Pour tout conctact Cliqué ici
+                            </a></h6> 
+                        </div>
+                        <div class="card-footer text-muted" style="background-color: #f8f9fa;">
+                            <small></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<figure class="text-center">
+    <blockquote class="blockquote">
+        <p>ce tout pour l'instant </p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+    <cite title="Source Title">avais vous trouver ce que vous cherché </cite>
+    </figcaption>
+</figure>
+{% endblock %} 

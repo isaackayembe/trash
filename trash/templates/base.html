@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block style %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/local.css' %}"> {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> {% load static %}
+    <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">{% load static %}
+    <link href="{% static 'css/templatemo-leadership-event.css' %}" rel="stylesheet">{% load static %} {% endblock %}
+    <title>trashpickup</title>
+    {% load static %}
+    <script src="{% static 'js/click-scroll.js' %}"></script>{% load static %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>{% load static %}
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>{% load static %}
+    <script src="{% static 'js/jquery.sticky.js' %}"></script>{% load static %}
+    <script src="{% static 'js/custom.js' %}"></script>{% load static %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+  
+    <nav class="navbar navbar-expand-lg" style="background-color: #000000;">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <a href="#" class="navbar-brand mx-auto mx-lg-0">
+                <span class="brand-text" style="color: #ffffff; font-weight: bold; font-size: 1.5rem;">TRASHPICK-UP<br>SARLU</span>
+            </a>
+    
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="{% url 'main' %}" style="color: #ffffff;">accueil</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="{% url 'index' %}" style="color: #ffffff;">+Enregistre</a>
+                    </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="{% url 'abonne' %}" style="color: #ffffff;">abonnée</a>
+                    </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="{% url 'logout_view' %}" style="color: #ffffff;">deconnexion</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="{% url 'authetification' %}" style="color: #ffffff;">connexion</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <style>
+        .navbar-nav .nav-link {
+            padding: 10px 15px;
+            transition: background-color 0.3s;
+        }
+    
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(175, 174, 174, 0.582);
+            border-radius: 5px;
+        }
+    
+        .navbar-toggler {
+            border: none;
+        }
+    
+        .navbar-toggler-icon {
+            background-color: #ffffff;
+        }
+    </style>
+    <main>
+        {% block content %} {% endblock %}
+    </main>
+    <footer style="background-color: #000000; color: #ffffff; padding: 40px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>À Propos de Nous</h5>
+                    <p>TrashPickup est une plateforme dédiée à la gestion efficace des déchets. Notre mission est de rendre le recyclage accessible et simple pour tous.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Liens Rapides</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'main' %}" style="color: #ffffff;">Accueil</a></li>
+                        <li><a href="{% url 'authetification' %}" style="color: #ffffff;">Connexion</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contactez-Nous</h5>
+                    <p>Email : <a href="isaackayembe44@gmail.com" style="color: #ffffff;">contact@trashpickup.com</a></p>
+                    <p>Téléphone : +243 813 510 911 </p>
+                    <p>Adresse : C/lingwala avenue kabinda N°589 ref pain victoire </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center" style="margin-top: 20px;">
+                    <h5>Suivez-Nous</h5>
+                    <a href="https://poe.com/chat/35zss70y8haxwz8ek9l" style="color: #ffffff; margin: 0 10px;">Facebook</a>
+                    <a href="#" style="color: #ffffff; margin: 0 10px;">Twitter</a>
+                    <a href="#" style="color: #ffffff; margin: 0 10px;">Instagram</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center" style="margin-top: 20px;">
+                    <p>&copy; 2025 TrashPickup. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <style>
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</body>
+<style>
+    h5{
+color: limegreen;
+    }
+</style>
+
+</html>

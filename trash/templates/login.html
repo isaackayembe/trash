@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Connexion</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #4e6302, #004d00); /* Dégradé noir et vert */
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .main {
+            background: #fff; /* Couleur de fond du formulaire */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Ombre plus douce */
+            width: 300px; /* Largeur fixe pour le formulaire */
+            text-align: center; /* Centrer le texte */
+        }
+
+        label {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: bold;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc; /* Bordure légère */
+            border-radius: 5px;
+            outline: none;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        input:focus {
+            background: #f9f9f9; /* Change de couleur au focus */
+            border-color: #004d00; /* Bordure en survol */
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #004d00; /* Vert foncé */
+            color: white; /* Couleur du texte */
+            font-size: 1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #007700; /* Vert plus clair au survol */
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">  
+        <form method="POST">
+            {% csrf_token %}
+            <label for="chk" aria-hidden="true">Login</label>
+            <input type="username" name="username" placeholder="Nom d'utilisateur" required>
+            <input type="password" name="password" placeholder="Mot de passe" required>
+            <button type="submit">Connexion</button>
+
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+        </form>
+
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

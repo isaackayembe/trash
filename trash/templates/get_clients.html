@@ -1,0 +1,36 @@
+<script>
+    function fetchClients() {
+        $.ajax({
+            url: '{% url "get_clients" %}',
+            method: 'GET',
+            success: function(data) {
+                // Mettez à jour votre tableau ici
+                let tbody = '';
+                data.forEach(function(client) {
+                    tbody += `<tr>
+                        <td>${client.nom}</td>
+                        <td>${client.prenom}</td>
+                        <td>${client.sex}</td>
+                        <td>${client.num_tel}</td>
+                        <td>${client.commune}</td>
+                        <td>${client.quartier}</td>
+                        <td>${client.avenue}</td>
+                        <td>${client.num_reference}</td>
+                        <td>${client.type_contrat}</td>
+                        <td>${client.statut_paiement ? 'Payé' : 'Non Payé'}</td>
+                        <td>
+                            <form action="{% url 'delete' client.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>`;
+                });
+                $('tbody').html(tbody);
+            }
+        });
+    }
+
+    // Appeler fetchClients toutes les 5 secondes
+    setInterval(fetchClients, 5000);
+</script>

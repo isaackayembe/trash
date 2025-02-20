@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="text-center">
+    <img src="{% static 'image/service.jpg' %}" class="custom-img" alt="...">
+</div>
+
+<style>
+.custom-img {
+    max-width: 50%; /* Ajustez ce pourcentage selon vos besoins */
+    height: auto; /* Pour conserver les proportions */
+}
+</style>
+<figure class="text-center">
+    <blockquote class="blockquote">
+        <p>Tableau de bord Abonne Enregistre</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+        Agent trash <cite title="Source Title">votre Guide sur terrain</cite>
+    </figcaption>
+</figure>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+    .agent-table {
+        margin-top: 20px;
+    }
+    /* Personnalisation des couleurs */
+    .table-primary {
+        background-color: rgb(2, 147, 209); /* Couleur des lignes paires */
+    }
+    .table-secondary {
+        background-color: rgb(180, 220, 244); /* Couleur des lignes impaires */
+    }
+    .table text-center{
+        background-color: deepskyblue;
+    }
+</style>
+
+<div class="container">
+    <div class="search-bar mb-4">
+        <form method="GET" action="{% url 'recherche' %}">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" value="{{ query }}" placeholder="Rechercher un agent...">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Client</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <h3 class="mb-4 text-center">Liste des Clients</h3>
+    <div class="table-responsive">
+        <table class="table text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Sexe</th>
+                    <th>Numéro de Téléphone</th>
+                    <th>Commune</th>
+                    <th>Quartier</th>
+                    <th>Avenue</th>
+                    <th>Numéro de Référence</th>
+                    <th>Type de Contrat</th>
+                    <th>Statut de Paiement</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in clients %}
+                <tr class="{% if forloop.counter0|divisibleby:2 %}table-primary{% else %}table-secondary{% endif %}">
+                    <td>{{ client.nom }}</td>
+                    <td>{{ client.prenom }}</td>
+                    <td>{{ client.sex }}</td>
+                    <td>{{ client.num_tel }}</td>
+                    <td>{{ client.commune }}</td>
+                    <td>{{ client.quartier }}</td>
+                    <td>{{ client.avenue }}</td>
+                    <td>{{ client.num_reference }}</td>
+                    <td>{{ client.type_contrat }}</td>
+                    <td>{% if client.statut_paiement %}Payé{% else %}Non Payé{% endif %}</td>
+                    <td>
+                        <a href="{% url 'valide' client.id %}">
+                        
+                            <button class="btn btn-success">paie</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

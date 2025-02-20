@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Validation Client</h2>
+<p>Nom : {{ client_temp.nom }}</p>
+<p>Prénom : {{ client_temp.prenom }}</p>
+<!-- Affichez d'autres informations si nécessaire -->
+
+<form method="post">
+    {% csrf_token %}
+    <button name="validate" type="submit">Valider</button>
+    <button name="refuse" type="submit">Refuser</button>
+</form>
+{% endblock %}

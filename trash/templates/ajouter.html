@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {%block content%}
+{% load static %}
+
+    <div class="container mt-5">
+        <h1 class="text-center">Ajouter des Éléments Dynamiques</h1>
+
+        <div class="mb-3">
+            <input type="text" id="titleInput" placeholder="Saisissez le titre ici" class="form-control mb-2">
+            <textarea id="descriptionInput" placeholder="Saisissez la description ici" class="form-control mb-2"></textarea>
+            <input type="file" id="imageInput" accept="image/*" class="form-control mb-2" onchange="loadImage(event)">
+            <img id="previewImage" class="w-100" alt="Aperçu de l'image" style="display:none;">
+            <button onclick="addElement()" class="btn btn-primary">Ajouter Éléments</button>
+        </div>
+
+        <div id="elementsContainer"></div>
+        <a href="{% url 'main' %}" class="btn btn-success mt-3">Afficher les Éléments</a>
+    </div>
+
+    <script>
+        function loadImage(event) {
+            const image = document.getElementById('previewImage');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            image.style.display = 'block'; // Afficher l'image
+        }
+
+        function addElement() {
+            const title = document.getElementById('titleInput').value;
+            const description = document.getElementById('descriptionInput').value;
+            const imageSrc = document.getElementById('previewImage').src;
+
+            if (!title || !description || imageSrc === '') {
+                alert('Veuillez remplir tous les champs et sélectionner une image.');
+                return;
+            }
+            // Exemple à ajouter dans le script de index.html pour simuler la connexion
+        function authenticateUser() {
+            localStorage.setItem('isAuthenticated', 'true'); // Simulez la connexion
+            }
+
+// Appelez cette fonction pour simuler une connexion
+            authenticateUser();
+
+            const elements = JSON.parse(localStorage.getItem('elements')) || [];
+            elements.push({ title, description, imageSrc });
+            localStorage.setItem('elements', JSON.stringify(elements));
+
+            // Réinitialiser les champs après ajout
+            document.getElementById('titleInput').value = '';
+            document.getElementById('descriptionInput').value = '';
+            document.getElementById('previewImage').style.display = 'none';
+        }
+    </script>
+
+
+{%endblock%}
