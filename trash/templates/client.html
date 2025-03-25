@@ -12,6 +12,7 @@
     height: auto; /* Pour conserver les proportions */
 }
 </style>
+
 <figure class="text-center">
     <blockquote class="blockquote">
         <p>Tableau de bord Abonne Enregistre</p>
@@ -20,26 +21,6 @@
         Agent trash <cite title="Source Title">votre Guide sur terrain</cite>
     </figcaption>
 </figure>
-
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        padding: 20px;
-    }
-    .agent-table {
-        margin-top: 20px;
-    }
-    /* Personnalisation des couleurs */
-    .table-primary {
-        background-color: rgb(2, 147, 209); /* Couleur des lignes paires */
-    }
-    .table-secondary {
-        background-color: rgb(180, 220, 244); /* Couleur des lignes impaires */
-    }
-    .table text-center{
-        background-color: deepskyblue;
-    }
-</style>
 
 <div class="container">
     <div class="search-bar mb-4">
@@ -53,6 +34,7 @@
         </form>
     </div>
 
+   
     <h3 class="mb-4 text-center">Liste des Clients</h3>
     <div class="table-responsive">
         <table class="table text-center">
@@ -86,7 +68,6 @@
                     <td>{% if client.statut_paiement %}Payé{% else %}Non Payé{% endif %}</td>
                     <td>
                         <a href="{% url 'valide' client.id %}">
-                        
                             <button class="btn btn-success">paie</button>
                         </a>
                     </td>
@@ -95,6 +76,6 @@
             </tbody>
         </table>
     </div>
-</div>
+
 
 {% endblock %}

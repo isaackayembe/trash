@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     {% block style %}
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/local.css' %}"> {% load static %}
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> {% load static %}
     <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">{% load static %}
@@ -17,6 +18,12 @@
     <script src="{% static 'js/jquery.sticky.js' %}"></script>{% load static %}
     <script src="{% static 'js/custom.js' %}"></script>{% load static %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin_custom.css' %}">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'admin_custom.js' %}"></script>
 
 </head>
 
@@ -25,18 +32,20 @@
     <nav class="navbar navbar-expand-lg" style="background-color: #000000;">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon">---</span>
             </button>
     
             <a href="#" class="navbar-brand mx-auto mx-lg-0">
-                <span class="brand-text" style="color: #ffffff; font-weight: bold; font-size: 1.5rem;">TRASHPICK-UP<br>SARLU</span>
+                <span class="brand-text" style="color: #00ff00; font-weight: bold; font-size: 1.5rem;">TRASHPICK-UP<br>SARLU</span>
             </a>
     
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link click-scroll" href="{% url 'main' %}" style="color: #ffffff;">accueil</a>
                     </li>
+                    {% endif %}
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link click-scroll" href="{% url 'index' %}" style="color: #ffffff;">+Enregistre</a>
@@ -53,10 +62,16 @@
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="{% url 'authetification' %}" style="color: #ffffff;">connexion</a>
+                        <a class="nav-link click-scroll" href="{% url 'authetification' %}" style="color: #ffffff;">Connexion</a>
                     </li>
                     {% endif %}
-                </ul>
+                    {% if user.is_authenticated %}
+                    
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="{% url 'admin_dashboard' %}" style="color: #ffffff;">+Admin</a>
+                        </li>
+                   
+                {% endif %}
             </div>
         </div>
     </nav>
@@ -72,11 +87,8 @@
             border-radius: 5px;
         }
     
-        .navbar-toggler {
-            border: none;
-        }
     
-        .navbar-toggler-icon {
+        .navbar-toggler {
             background-color: #ffffff;
         }
     </style>
@@ -88,7 +100,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <h5>À Propos de Nous</h5>
-                    <p>TrashPickup est une plateforme dédiée à la gestion efficace des déchets. Notre mission est de rendre le recyclage accessible et simple pour tous.</p>
+                    <p>TrashPickup est une plateforme dédiée à la recuperation  efficace des déchets. Notre mission est de rendre le recyclage accessible et simple pour tous.</p>
                 </div>
                 <div class="col-md-4">
                     <h5>Liens Rapides</h5>
@@ -99,8 +111,8 @@
                 </div>
                 <div class="col-md-4">
                     <h5>Contactez-Nous</h5>
-                    <p>Email : <a href="isaackayembe44@gmail.com" style="color: #ffffff;">contact@trashpickup.com</a></p>
-                    <p>Téléphone : +243 813 510 911 </p>
+                    <p>Email : <a href="www.trashpickup243@gmail.com" style="color: #ffffff;">trashpickup243@gmail.com</a></p>
+                    <p>Téléphone : +243 838 765 900</p>
                     <p>Adresse : C/lingwala avenue kabinda N°589 ref pain victoire </p>
                 </div>
             </div>

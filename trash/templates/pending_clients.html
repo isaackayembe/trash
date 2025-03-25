@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card mt-4">
+<div class="table-responsive">
+        
+    <div class="card mt-4 rounded shadow">
+        <div class="card-header bg-info text-white text-center">
+            <h1>Clients Non Approuvés</h1>
+        </div>
+        <div class="card-body">
+            <table  class="table text-center">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>prenom</th>
+                        <th>Commune</th>
+                        <th>Num tel</th>
+                        <th>Action1</th>
+                        <th>Action2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for client in clients %}
+                    <tr>
+                        <td>{{ client.nom }}</td>
+                        <td>{{ client.prenom }}</td> 
+                        <td>{{ client.commune }}</td>
+                        <td>{{ client.num_tel }}</td>
+                        <td>
+                            <a href="{% url 'approve_client' client.id %}">
+                        
+                                <button class="btn btn-success">Approuver</button>
+                            </a>
+                        <td>
+                            <form action="{% url 'delete' client.id %}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet agent ?');">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Refus</button>
+                            </form>
+                        </td>
+                           
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5">Aucun client en attente d'approbation</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+       
+    </div>
+</div>
+
+
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+    
+    {%endblock%}
+
+

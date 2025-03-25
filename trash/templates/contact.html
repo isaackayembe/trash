@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block content %}
+
+<div class="text-center">
+    <img src="{% static 'image/valide.jpg' %}" class="custom" alt="...">
+</div>
+
+<div class="container mt-4">
+    <h2 class="text-center">Contactez-Nous</h2>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="shadow-sm p-3 mb-4 bg-body-tertiary rounded d-flex align-items-center">
+                <img src="{% static 'image/what.png' %}" alt="WhatsApp" width="30" class="me-2">
+                <span>WhatsApp: +243 838 765 900</span>
+            </div>
+            <div class="shadow-sm p-3 mb-4 bg-body-tertiary rounded d-flex align-items-center">
+                <img src="{% static 'image/what.png' %}" alt="WhatsApp" width="30" class="me-2">
+                <span>Chaine whatsapp trashpick-up sarlu</span>
+            </div>
+            <div class="shadow-sm p-3 mb-4 bg-body-tertiary rounded d-flex align-items-center">
+                <img src="{% static 'image/fac.png' %}" alt="Facebook" width="30" class="me-2">
+                <span>Facebook: page trashpick-upsarlu</span>
+            </div>
+            <div class="shadow-sm p-3 mb-4 bg-body-tertiary rounded d-flex align-items-center">
+                <img src="{% static 'image/tik.png' %}" alt="TikTok" width="30" class="me-2">
+                <span>TikTok: trashpick-up</span>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    .custom {
+        max-width: 70%;
+        height: auto;
+        border-radius: 25px; /* Pour conserver les proportions */
+    }
+</style>
+
+{% endblock %}

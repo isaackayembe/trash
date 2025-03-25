@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block content %}
+<div class="text-center">
+    <img src="{% static 'image/reabonnement.jpg' %}" class="custom" alt="...">
+  </div>
+  <br>
+  <br>
+<div class="container">
+    <div class="search-bar mb-4">
+        <form method="GET" action="{% url 'reabonnement' %}">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" value="{{ query }}" placeholder="veuillez tapez votre identifiant reabonnement">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Client</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <h3 class="mb-4 text-center">Résultats de la recherche</h3>
+    {% if clients %}
+    <div class="table-responsive">
+        <table class="table text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Sexe</th>
+                    <th>Numéro de Téléphone</th>
+                    <th>Commune</th>
+                    <th>Quartier</th>
+                    <th>Avenue</th>
+                    <th>Numéro de Référence</th>
+                    <th>Type de Contrat</th>
+                    <th>Statut de Paiement</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in clients %}
+                <tr class="{% if forloop.counter0|divisibleby:2 %}table-primary{% else %}table-secondary{% endif %}">
+                    <td>{{ client.nom }}</td>
+                    <td>{{ client.prenom }}</td>
+                    <td>{{ client.sex }}</td>
+                    <td>{{ client.num_tel }}</td>
+                    <td>{{ client.commune }}</td>
+                    <td>{{ client.quartier }}</td>
+                    <td>{{ client.avenue }}</td>
+                    <td>{{ client.num_reference }}</td>
+                    <td>{{ client.type_contrat }}</td>
+                    <td>{% if client.statut_paiement %}Payé{% else %}Non Payé{% endif %}</td>
+                    <td>
+                        <a href="{% url 'trans' client.id %}">
+                            <button class="btn btn-success">paie</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="text-center">Aucun client trouvé pour "{{ query }}".</p>
+    {% endif %}
+</div>
+<style>
+    .one{
+        text-align: center;
+        justify-content: center;
+        width: 100%;
+        color: rgb(0, 250, 33);
+    }
+    .custom-img {
+                max-width:81% ; /* Ajustez ce pourcentage selon vos besoins */
+                height: auto; 
+                border-radius: 25px;/* Pour conserver les proportions */
+            }
+            .custom {
+                max-width: 100%;
+                height: auto;
+                border-radius: 0px 0px 25px 25px;
+
+            }
+</style>
+  <br>
+  <br>
+   
+{% endblock %}

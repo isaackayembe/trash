@@ -4,7 +4,6 @@ from .models import Client
 from .models import ClientTemp
 
 
-
 class ClientForm(forms.ModelForm):
     class Meta:
         model = Client 
@@ -24,6 +23,7 @@ class ClientForm(forms.ModelForm):
         }
 
 
+
 class ClientTempForm(forms.ModelForm):
     class Meta:
         model = ClientTemp
@@ -41,3 +41,10 @@ class ClientTempForm(forms.ModelForm):
             'type_contrat': forms.Select(attrs={'class': 'form-select'}),
             'statut_paiement': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
+# forme.py
+
+def statistiques(clients):
+    total_clients = len(clients)
+    reabonne_count = sum(1 for client in clients if client.statut_paiement)
+    non_reabonne_count = total_clients - reabonne_count
+    return total_clients, reabonne_count, non_reabonne_count

@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {%block content%}
+{% load static %}
+
+<div class="text-center">
+  <img src="{% static 'image/valide.jpg' %}" class="custom" alt="...">
+</div>
+<div class="alert alert-primary" role="alert">
+    Votres Inscription a etait envoyer avec success!
+  </div>
+  <div class="alert alert-warning" role="alert">
+    traitement encours nous prenos le reste du processus en charge veuillez patienter pendant que nos service client traite votre dossier
+    une notification suivie d'un appler vous sera communique dans 45 minite suivie du payement de l'abonnement choisie pour beneficier de service souscrit merci d'avoir choisie trashpickup sarlu 
+    <div class="d-flex align-items-center">
+        <strong role="status">traitement en cours .....</strong>
+        <div class="spinner-border ms-auto" aria-hidden="true"></div>
+      </div> 
+      <a href="{% url 'main' %}" class="btn btn-warning">
+        Retour 
+    </a>
+  </div>
+  <h3 class="one">Ce tout pour le moment merci! </h3>
+ 
+  <style>
+    .one{
+        text-align: center;
+        justify-content: center;
+        width: 100%;
+        color: rgb(0, 250, 33);
+    }
+    .custom-img {
+                max-width:80% ; /* Ajustez ce pourcentage selon vos besoins */
+                height: auto; 
+                border-radius: 25px;/* Pour conserver les proportions */
+            }
+            .custom {
+                max-width: 70%;
+                height: auto;
+
+            }
+</style>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+{% endblock %}

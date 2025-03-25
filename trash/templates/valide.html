@@ -23,12 +23,18 @@
 <div class="container mt-5">
     <figure class="text-center">
         <blockquote class="blockquote">
-            <p>DETAIL CLIENT</p>
+            <p>BON DE PAYEMENT CLIENT </p>
         </blockquote>
         <figcaption class="blockquote-footer">
-            Reabonnement <cite title="Source Title">Resiliation du contrat</cite>
+            Reabonnement <cite title="Source Title">agent flex paie</cite>
         </figcaption>
+        <figcaption class="blockquote-footer">
+            K2Y1R5971<cite title="Source Title">2025TRASHPICK-UP</cite>
+        </figcaption>
+        <h5>Bon/ref/DRC/+243/agent</h5>
+        <h6>Autorisation_reabonment_client_aprouved</h6>
     </figure>
+   
     
     <div class="agent-card mt-4">
         <div class="row">
@@ -36,32 +42,41 @@
                 <p>Nom : {{ client.nom }}</p>
                 <p>Postnom : {{ client.postnom }}</p>
                 <p>Prénom : {{ client.prenom }}</p>
-                <p>Sexe : {{ client.sexe }}</p>
-                <p>Adresse : {{ client.adresse }}</p>
+                <p>Sexe : {{ client.sex }}</p>
+                <p>Commune : {{ client.commune }}</p>
+                <p>ref : {{ client.date_enregistrement }}</p>
             </div>
             <div class="col-md-6">
                 <p>Email : {{ client.email }}</p>
                 <p>Type de Contrat : {{ client.type_contrat }}</p>
                 <p>Numéro de Téléphone : {{ client.num_tel }}</p>
                 <p>Statut de Paiement : <span id="paymentStatus">{% if client.statut_paiement %}Payé{% else %}Non Payé{% endif %}</span></p>
-            </div>
+                <p>paiement_date : {{ client.date_paiement }}</p>
+                
         </div>
+    
 
         <div class="mt-4 d-flex justify-content-between">
+            {% if user.is_authenticated %}
             <form action="{% url 'delete' client.id %}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet agent ?');">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
             </form>
+           
 
-            <form method="post" onsubmit="disableButton();">
+            <form action="{% url 'renouveler_abonnement' client.id %}" method="post" onsubmit="disableButton();">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-success btn-custom" id="presenceButton" 
-                    {% if client.clien == "Oui" %} disabled {% endif %}>
+                    {% if Client.Clien == "True" %} disabled {% endif %}>
                     renouvelement abonnement 
                 </button>
             </form>
+                {% endif %}
         </div>
     </div>
 </div>
+<br>
+<br>
+<br>
 
 {% endblock %}

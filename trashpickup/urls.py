@@ -19,19 +19,32 @@ from django.urls import path
 from trash.views import*
 from django.conf.urls.static import static
 from trashpickup import settings
+# urls.py
+# urls.py
+from django.urls import path
+from django.urls import path
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('force/', admin.site.urls),
+    path('a',admin_dashboard, name='admin_dashboard'),
     path('client',abonne, name='abonne'),
     path('y',index, name='index'),
     path('',main, name='main'),
     path('login',authetification, name='authetification'),
     path('deco',logout_view, name='logout_view'),
     path('delete/<int:client_id>/',delete, name='delete'),
-    path('get_clients/', get_clients, name='get_clients'),
     path('valide/<int:id>/',valide, name='valide'),
-    path('ajouter/',ajouter, name='ajouter'),
-    path('register/', register_client, name='register_client'),
-    path('validate/<int:client_id>/', validate_client, name='validate_client'),
+    path('approve/<int:client_id>/', approve_client, name='approve_client'),
     path('recherche',recherche, name='recherche'),
+    path('pending_clients/', pending_clients, name='pending_clients'),
+    path('mes',message, name='message'),
+    path('renouveler_abonnement/<int:client_id>/', renouveler_abonnement, name='renouveler_abonnement'),
+    path('verifier_abonnements/', verifier_abonnements, name='verifier_abonnements'),
+    path('reabon',reabonnement, name='reabonnement'),
+    path('contact',contact, name='contact'),
+    path('detail',detail, name='detail'),
+    path('trans/<int:id>/',trans, name='trans'),
+    
 ]
+
+contact

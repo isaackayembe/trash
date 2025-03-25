@@ -1,10 +1,137 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {%block content%}
+{% load static %}
 
-{% block content %}
-<h2>Enregistrement Client</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Enregistrer</button>
-</form>
-{% endblock %}
+<div class="text-center">
+    <img src="{% static 'image/service2.jpg' %}" class="custom-img" alt="...">
+</div>
+
+<style>
+.custom-img {
+    max-width: 50%; /* Ajustez ce pourcentage selon vos besoins */
+    height: auto; /* Pour conserver les proportions */
+}
+</style>
+<figure class="text-center">
+    <blockquote class="blockquote">
+        <p>Bienvenue sur la  page d'Enregistre </p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+       <cite title="Source Title"> veillez nous fournir vos identiter chers abonnées</cite>
+    </figcaption>
+</figure>
+<div class="container">
+    <div class="form-container" style="border-radius: 15px; padding: 30px; background-color: #f8f9fa; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">
+        <form method="post" class="row g-3 needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="col-md-6">
+                <label for="id_nom" class="form-label">Nom</label>
+                {{ forme.nom.label_tag }}
+                {{ forme.nom }}
+                <div class="invalid-feedback">
+                    Veuillez entrer un nom valide.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="id_postnom" class="form-label">Postnom</label>
+                {{ forme.postnom.label_tag }}
+                {{ forme.postnom }}
+                <div class="invalid-feedback">
+                    Veuillez entrer un postnom valide.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="id_prenom" class="form-label">Prénom</label>
+                {{ forme.prenom.label_tag }}
+                {{ forme.prenom }}
+                <div class="invalid-feedback">
+                    Veuillez entrer un prénom valide.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="id_sex" class="form-label">Sexe</label>
+                {{ forme.sex.label_tag }}
+                {{ forme.sex }}
+                <div class="invalid-feedback">
+                    Veuillez sélectionner un sexe.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="id_num_tel" class="form-label">Numéro de Téléphone</label>
+                {{ forme.num_tel.label_tag }}
+                {{ forme.num_tel }}
+                <div class="invalid-feedback">
+                    Veuillez fournir un numéro de téléphone valide.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="id_commune" class="form-label">Commune</label>
+                {{ forme.commune.label_tag }}
+                {{ forme.commune }}
+                <div class="invalid-feedback">
+                    Veuillez entrer une commune valide.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="id_quartier" class="form-label">Quartier</label>
+                {{ forme.quartier.label_tag }}
+                {{ forme.quartier }}
+                <div class="invalid-feedback">
+                    Veuillez entrer un quartier valide.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="id_avenue" class="form-label">Avenue</label>
+                {{ forme.avenue.label_tag }}
+                {{ forme.avenue }}
+                <div class="invalid-feedback">
+                    Veuillez entrer une avenue valide.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="id_num_reference" class="form-label">Numéro de Référence</label>
+                {{ forme.num_reference.label_tag }}
+                {{ forme.num_reference }}
+                <div class="invalid-feedback">
+                    Veuillez fournir un numéro de référence valide.
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="id_type_contrat" class="form-label">Type de Contrat</label>
+                {{ forme.type_contrat }}
+                <div class="invalid-feedback">
+                    Veuillez sélectionner un type de contrat.
+                </div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit" style="width: 100%; border-radius: 25px; border: none;">
+                    Enregistrer
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .form-container {
+        border-radius: 15px; /* Bords arrondis */
+        padding: 30px; /* Espacement interne */
+        background-color: #f8f9fa; /* Couleur de fond du formulaire */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Ombre portée */
+    }
+
+    .btn-primary {
+        background-color: #007bff; /* Couleur principale */
+        color: #ffffff; /* Couleur du texte */
+        font-size: 16px; /* Taille de la police */
+        padding: 10px; /* Espacement interne */
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3; /* Couleur au survol */
+    }
+</style>
+<br>
+<br>
+<br>
+{%endblock%}

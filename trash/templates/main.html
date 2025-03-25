@@ -4,28 +4,17 @@
 {% block content %}
 
 
-<section class="hero-section hero-section-full-height">
-    <div class="container-fluid">
-        <div class="row">
 
-            <div class="col-lg-12 col-12 p-0">
-                <div id="hero-slide" class="carousel carousel-fade slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="{% static 'image/home1.jpg' %}" class="carousel-image img-fluid" alt="...">
-                            
-                        </div>
-
-                    
-                    </div>
-
-                    
-                </div>
-            </div>
-
-        </div>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'image/OK.jpg' %}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'image/home1.jpg' %}" class="d-block w-100" alt="...">
+      </div>
     </div>
-</section>
+  </div>
 
 <br/>
 
@@ -43,8 +32,9 @@
             
             <style>
             .custom-img {
-                max-width: 50%; /* Ajustez ce pourcentage selon vos besoins */
-                height: auto; /* Pour conserver les proportions */
+                max-width:100% ; /* Ajustez ce pourcentage selon vos besoins */
+                height: auto; 
+                border-radius: 25px;/* Pour conserver les proportions */
             }
             .custom {
                 max-width: 90%;
@@ -60,6 +50,37 @@
             .navbar-enr{
                 color: rgb(3, 91, 255);
             }
+            .loader {
+            width: 48px;
+            height: 48px;
+            border: 3px dotted #FFF;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            animation: rotation 2s linear infinite;
+        }
+        .loader::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border: 3px dotted #00ff00;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: rotationBack 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes rotationBack {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-360deg); }
+        }
 
             </style>
             <div class="col-md-12"></div>
@@ -70,7 +91,7 @@
                 <p>Nous prenons en charge l'évacuation des déchets ménagers et des entreprise avec ponctualité et efficacité.</p>
                 <p>Faites confiance à notre équipe pour une gestion des déchets responsable et respectueuse de l'environnement.</p>
                 <div>
-                    <img src="{% static 'image/logo.jpg' %}" class="custom-img" alt="...">
+                    <img src="{% static 'image/OK.jpg' %}" class="custom-img" alt="...">
                 </div>
             </div>
             
@@ -79,7 +100,7 @@
                 <p>Nous nous spécialisons dans l'évacuation des déchets ménagers et des déchets d'entreprise, en garantissant un service ponctuel et fiable. Notre équipe dévouée s'assure que vos déchets sont traités de manière responsable, vous permettant ainsi de vous concentrer sur l'essentiel.</p>
                 <p>Chez TrashPickup, nous croyons fermement en un monde où la propreté et le respect de l'environnement vont de pair. C'est pourquoi nous mettons en œuvre des pratiques durables pour réduire l'impact de nos déchets sur notre planète.
 
-                    Rejoignez-nous dans notre démarche vers un avenir plus propre et plus responsable  <a href="{% url 'register_client' %}" class="navbar-enr">Cliqué ici pour vous enregistre 
+                    Rejoignez-nous dans notre démarche vers un avenir plus propre et plus responsable  <a href="{% url 'index' %}" class="navbar-enr">Inscription Client
                     </a> </p>
             </div>
           
@@ -91,23 +112,27 @@
 <br/>
 <br/>
 
-<section id="about" style="background-color: #ececec; padding: 30px 0;">
+<section id="about" style="background-color: #eaedee; padding: 30px 0;">
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8 text-center mb-4">
                 <h2 style="font-weight: bold; color: #000000;">PROGRAMME & SERVICE</h2>
             </div>
+            
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col">
                     <div class="card h-100 shadow-sm" style="border-radius: 10px;">
                         <img src="{% static 'image/home1.jpg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title" style="color: #05ec11;">Récupération des déchets Domicile</h5>
-                            <h6 style="color: #555;">lundi, mercredi, vendredi & mardi,vendredi</h6>
-                            <h5 class="card-title" style="color: #05ec11;">Récupération des Entreprise </h5>
-                            <h6 style="color: #555;">Ajustable a la demande</h6>
-                            <p class="card-text">Évacuation de tous les déchets de nos abonnés sous contrat</p>
+                            <h5 class="card-title" style="color: #1dc425;">HORAIRE DE PICK-UP</h5>
+                            <h6 style="color: #555;"> Categorie 1 : lundi, mercredi, vendredi </h6>
+                            <h6 style="color: #555;">Categorie 2 : mardi,samedi</h6>
+                            <h5 class="card-title" style="color: #1dc425;">HEURE</h5>
+                            <h6 style="color: #555;">7H00 à 18h00</h6>
+                            <p class="card-text">Évacuation uniquement aux abonnés avec un contrat en cours. reabonnéz-vous vite chers abonnée</p>
+                            <h3 class="mt-3">Services pickup en cours  </h3>
+                            <span class="loader"></span>
                         </div>
                         <div class="card-footer text-muted" style="background-color: #f8f9fa;">
                             <small>sachet poubelle gratuit</small>
@@ -118,9 +143,22 @@
                     <div class="card h-100 shadow-sm" style="border-radius: 10px;">
                         <img src="{% static 'image/bon2.jpg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title" style="color: #05ec11;">Abonnement</h5>
+                            <h5 class="card-title"style="color: #1dc425;">Abonnement</h5>
                             <p class="card-text">Pour les entreprises, une évaluation sur terrain déterminera le prix du bouquet extra que vous allez choisir.</p>
-                            <h6><a href="{% url 'register_client' %}" class="navbar-enr">+Cliqué ici pour vous enregistre 
+                            <h6><a href="{% url 'detail' %}" class="navbar-enr">
+                                <button class="btn btn-primary" type="submit" style="width: 100%; border-radius: 25px; border: none;">
+                                    Detail avant Inscription
+                                     </button>
+                            </a></h6> 
+                            <h6><a href="{% url 'index' %}" class="navbar-enr">
+                                <button class="btn btn-primary" type="submit" style="width: 100%; border-radius: 25px; border: none;">
+                                    +Inscription  
+                                     </button>
+                            </a></h6> 
+                            <h6><a href="{% url 'reabonnement' %}" class="navbar-enr">
+                                <button class="btn btn-primary" type="submit" style="width: 100%; border-radius: 25px; border: none;">
+                                    +Reabonnement
+                                     </button>
                             </a></h6> 
                         </div>
                         <div class="card-footer text-muted" style="background-color: #f8f9fa;">
@@ -132,7 +170,7 @@
                     <div class="card h-100 shadow-sm" style="border-radius: 10px;">
                         <img src="{% static 'image/service.jpg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title" style="color: #05ec11;">Service Client</h5>
+                            <h5 class="card-title" style="color: #1dc425;">Service Client 24h/6j</h5>
                             <p class="card-text">1. Assistance Personnalisée 
                                 2.Réponses Rapides 
                                 3. Formation et Conseils
@@ -144,8 +182,13 @@
                                 9. Ressources en Ligne
                                 10. Offres Spéciales et Promotions 
                             </p>
-                            <h6><a href="{% url 'register_client' %}" class="navbar-enr">+ Pour tout conctact Cliqué ici
+                            <h6>
+                            <a href="{% url 'contact' %}" class=" class="btn btn-primary" type="submit" style="width: 100%; border-radius: 25px; border: none;">
+                                 <button class="btn btn-primary" type="submit" style="width: 100%; border-radius: 25px; border: none;">
+                                + contact 
+                                 </button>
                             </a></h6> 
+                            
                         </div>
                         <div class="card-footer text-muted" style="background-color: #f8f9fa;">
                             <small></small>
@@ -155,7 +198,40 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
 </section>
+<main class="container my-5">
+    <h2 class="text-center mb-4">Comment Utiliser notre site ?</h2>
+    <div class="row">
+       
+        <div class="col-md-6">
+            <div class="video-container my-4 shadow-lg p-3" style="background-color: #ffffff; border-radius: 8px;">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/jw67SPVn3f0" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+            <p class="text-muted mb-4">Cette vidéo vous guidera à travers le processus d'enregistrement, réabonnement et réservation d'événements. Assurez-vous de suivre les étapes pour un enregistrement réussi.</p>
+            <a href="{% url 'index' %}" class="btn btn-primary btn-lg">Commencez Votre Enregistrement En Cliquant Ici !</a>
+        </div>
+    </div>
+</main>
+<br>
+<br>
+
+
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'image/bagner .jpg' %}" class="d-block w-100" alt="...">
+            <br>
+            <div class="carousel-caption d-flex justify-content-center align-items-center">
+                <a href="{% url 'index' %}" class="btn btn-danger btn-lg">Inscription</a>
+            </div>
+        </div>
+    </div>
+</div>
 <figure class="text-center">
     <blockquote class="blockquote">
         <p>ce tout pour l'instant </p>

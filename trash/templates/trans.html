@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Paiement</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                {% load static %}
+                <img src="{% static 'image/payement.jpg' %}" class="img-fluid" alt="Image de Paiement"> 
+            </div>
+            <!-- Liens de paiement à gauche -->
+            <div class="col-md-6">
+                <h3 class="text-center">Options de Paiement</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="shadow-sm p-3 mb-4 bg-body-tertiary rounded d-flex align-items-center">
+                                <a href="#" target="_blank" > <img src="{% static 'image/mpesa.png' %}" alt="WhatsApp" width="30" class="me-2">
+                                    <span>M-pesa</span></a>
+                               
+                            </div>
+                            <div class="shadow-sm p-3 mb-4 bg-body-tertiary rounded d-flex align-items-center">
+                                <a href="#" target="_blank" > <img src="{% static 'image/orange.png' %}" alt="WhatsApp" width="30" class="me-2">
+                                    <span>Orange Money</span></a>
+                            </div>
+                            <div class="shadow-sm p-3 mb-4 bg-body-tertiary rounded d-flex align-items-center">
+                                <a href="#" target="_blank" > <img src="{% static 'image/airtel.png' %}" alt="WhatsApp" width="30" class="me-2">
+                                    <span>airtel Money</span></a>
+                            </div>
+                           
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{% url 'valide' client.id %}" target="_blank" class="btn btn-info btn-block"> bon de reabonnement par agent  </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Image de paiement à droite -->
+           
+        </div>
+    </div>
+    <br>
+    <h2> Payement mobile money indisponible pour l'instant...
+        <h5>pour tout reabonnement contacter le service client trash pour le payement sur place merci pour votre confiance .</h5> </h2>
+        
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+ 
