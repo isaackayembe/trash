@@ -15,20 +15,25 @@ class Client(models.Model):
     TYPE_CONTRAT_CHOICES = [
         ('1', '10$'),
         ('2', '15$'),
-        ('4', '100$'),
-        ('5', '150$'),
-        ('6', '200$'),
-        ('7', '250$'),
-        ('8', '300$'),
-        ('9', '350$'),
-        ('10', '400$'),
-        ('11', '450$'),
-        ('12', '500$'),
-        ('13', '550$'),
-        ('14', '600$'),
-        ('15', '650$'),
-        ('16', '700$'),
-        ('17', '1000$'),
+        ('3', '20$'),
+        ('4', '30$'),
+        ('5', '40$'),
+        ('6', '45$'),
+        ('7', '100$'),
+        ('8', '150$'),
+        ('9', '200$'),
+        ('10', '250$'),
+        ('11', '300$'),
+        ('12', '350$'),
+        ('13', '400$'),
+        ('14', '450$'),
+        ('15', '500$'),
+        ('16', '550$'),
+        ('17', '600$'),
+        ('18', '650$'),
+        ('19', '700$'),
+        ('20', '800$'),
+        ('21', '1000$'),
     ]
 
     nom = models.CharField(max_length=100)
@@ -53,36 +58,44 @@ class Client(models.Model):
         elif self.type_contrat == '2':
             return 15.00
         elif self.type_contrat == '3':
-            return 100.00
+            return 20.00
         elif self.type_contrat == '4':
-            return 150.00  
+            return 30.00
         elif self.type_contrat == '5':
-            return 200.00 
+            return 40.00
         elif self.type_contrat == '6':
-            return 250.00 
+            return 45.00
         elif self.type_contrat == '7':
-            return 300.00 
+            return 100.00
         elif self.type_contrat == '8':
-            return 350.00 
+            return 150.00  
         elif self.type_contrat == '9':
-            return 400.00 
+            return 200.00 
         elif self.type_contrat == '10':
-            return 450.00 
+            return 250.00 
         elif self.type_contrat == '11':
-            return 500.00 
+            return 300.00 
         elif self.type_contrat == '12':
-            return 550.00 
+            return 350.00 
         elif self.type_contrat == '13':
-            return 600.00 
+            return 400.00 
         elif self.type_contrat == '14':
-            return 650.00 
+            return 450.00 
         elif self.type_contrat == '15':
-            return 700.00
+            return 500.00 
         elif self.type_contrat == '16':
-            return 800.00 
+            return 550.00 
         elif self.type_contrat == '17':
+            return 600.00 
+        elif self.type_contrat == '18':
+            return 650.00 
+        elif self.type_contrat == '19':
+            return 700.00
+        elif self.type_contrat == '20':
+            return 800.00 
+        elif self.type_contrat == '21':
             return 1000.00   # Modifiez ce montant selon votre besoin
-        return 0.00
+       
 
 
     def __str__(self):

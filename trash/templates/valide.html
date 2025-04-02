@@ -12,14 +12,47 @@
     .btn-custom {
         border-radius: 25px; /* Arrondir les bords du bouton */
     }
+    @keyframes swing {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffffff; /* Couleur de fond */
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            animation: swing 2s infinite; /* Animation va-et-vient */
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1); /* Effet de zoom au survol */
+        }
+
+        .whatsapp-button img {
+            width: 60px; /* Ajuster la taille de l'image */
+            height: 60px; /* Pour maintenir le ratio */
+        }
 </style>
+
 <script>
     function disableButton() {
         document.getElementById('presenceButton').disabled = true;
         document.getElementById('paymentStatus').innerText = "Payé";
     }
 </script>
-
+<a href="https://wa.me/+243838765900"class="whatsapp-button" target="_blank">
+    <img src="{% static 'image/what.png' %}" alt="WhatsApp">
+</a>
 <div class="container mt-5">
     <figure class="text-center">
         <blockquote class="blockquote">
@@ -58,21 +91,28 @@
 
         <div class="mt-4 d-flex justify-content-between">
             {% if user.is_authenticated %}
+            {% if user.is_superuser %}
             <form action="{% url 'delete' client.id %}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet agent ?');">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                <button type="submit" class="btn btn-danger btn-sm">
+                {% if user.is_superuser %}   {% endif %}
+                    Supprimer
+
+                </button>
             </form>
-           
+            {% endif %}
 
             <form action="{% url 'renouveler_abonnement' client.id %}" method="post" onsubmit="disableButton();">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-success btn-custom" id="presenceButton" 
-                    {% if Client.Clien == "True" %} disabled {% endif %}>
-                    renouvelement abonnement 
+                <button type="submit" class="btn btn-success btn-custom" id="presenceButton"
+                    {% if client.statut_paiement %} disabled {% endif %}>
+                    Renouvellement Abonnement
                 </button>
             </form>
                 {% endif %}
+              
         </div>
+      
     </div>
 </div>
 <br>

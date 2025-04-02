@@ -33,7 +33,6 @@
                     <th>Avenue</th>
                     <th>Numéro de Référence</th>
                     <th>Type de Contrat</th>
-                    <th>Statut de Paiement</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -49,7 +48,6 @@
                     <td>{{ client.avenue }}</td>
                     <td>{{ client.num_reference }}</td>
                     <td>{{ client.type_contrat }}</td>
-                    <td>{% if client.statut_paiement %}Payé{% else %}Non Payé{% endif %}</td>
                     <td>
                         <a href="{% url 'trans' client.id %}">
                             <button class="btn btn-success">paie</button>

@@ -22,6 +22,8 @@ from django.shortcuts import render
 from .forme import statistiques
 from django.utils import timezone
 from datetime import timedelta
+from django.contrib.auth.models import User
+from django.shortcuts import render
 
 
 
@@ -31,11 +33,9 @@ from datetime import timedelta
 # Create your views here.
 @login_required
 def admin_dashboard(request):
-    # Récupérer les clients en attente d'approbation
-    
-    
+    # Récupérer les clients approuvés
     clients_approuves = Client.objects.filter(is_approved=True)
-    
+
     # Statistiques des clients
     total_clients = clients_approuves.count()
     reabonne_count = clients_approuves.filter(statut_paiement=True).count()
@@ -50,6 +50,9 @@ def admin_dashboard(request):
     # Vérifier s'il y a des clients en attente d'approbation
     clients_en_attente = Client.objects.filter(is_approved=False).exists()
 
+    # Récupérer les utilisateurs
+    users = User.objects.all()  # Récupère tous les utilisateurs
+
     context = {
         'total_clients': total_clients,
         'reabonne_count': reabonne_count,
@@ -57,10 +60,9 @@ def admin_dashboard(request):
         'total_montant': total_montant,
         'total_montant_reabonne': total_montant_reabonne,
         'clients_en_attente': clients_en_attente,
+        'users': users,  # Ajoutez les utilisateurs au contexte
     }
     return render(request, 'profil.html', context)
-
-
 
 def base(request):
     return render(request, 'base.html')
@@ -129,7 +131,7 @@ def renouveler_abonnement(request, client_id):
 def verifier_abonnements(request):
     clients = Client.objects.all()
     for client in clients:
-        expiration_date = client.date_paiement + timedelta(days=1)  # Supposons un abonnement de 30 jours
+        expiration_date = client.date_paiement + timedelta(days=30)  # Supposons un abonnement de 30 jours
         if timezone.now() > expiration_date:
             client.statut_paiement = False  # Mettre à jour le statut à non payé
             client.save()

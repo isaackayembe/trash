@@ -1,12 +1,52 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+{% extends 'base.html' %} {%block content%}
+{% load static %}
+    <style>
+        .agent-card {
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        .btn-custom {
+            border-radius: 25px; /* Arrondir les bords du bouton */
+        }
+        @keyframes swing {
+                0% { transform: translateX(0); }
+                25% { transform: translateX(-10px); }
+                50% { transform: translateX(5px); }
+                75% { transform: translateX(-5px); }
+                100% { transform: translateX(0); }
+            }
+    
+            .whatsapp-button {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: #ffffff; /* Couleur de fond */
+                border: none;
+                border-radius: 50%;
+                padding: 10px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                cursor: pointer;
+                z-index: 1000;
+                animation: swing 2s infinite; /* Animation va-et-vient */
+            }
+    
+            .whatsapp-button:hover {
+                transform: scale(1.1); /* Effet de zoom au survol */
+            }
+    
+            .whatsapp-button img {
+                width: 60px; /* Ajuster la taille de l'image */
+                height: 60px; /* Pour maintenir le ratio */
+            }
+    </style>
     <title>Paiement</title>
 </head>
 <body>
+    <a href="https://wa.me/+243838765900"class="whatsapp-button" target="_blank">
+        <img src="{% static 'image/what.png' %}" alt="WhatsApp">
+    </a>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 text-center">
@@ -36,7 +76,7 @@
                         </div>
                     </li>
                     <li class="list-group-item">
-                        <a href="{% url 'valide' client.id %}" target="_blank" class="btn btn-info btn-block"> bon de reabonnement par agent  </a>
+                        <a href="{% url 'valide' client.id %}" target="_blank" class="btn btn-info btn-block">verifier statut abonnement</a>
                     </li>
                 </ul>
             </div>
@@ -52,8 +92,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
 
 
- 
+
+    {%endblock%}
